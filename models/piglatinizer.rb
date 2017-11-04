@@ -17,12 +17,9 @@ class PigLatinizer
   def to_pig_latin(phrase)
     @phrase = phrase
     phrase_array = @phrase.split(" ")
-    new_phrase = ""
-    phrase_array.each do |word|
+    new_phrase = phrase_array.map do |word|
       new_word = self.piglatinize(word)
-      new_phrase += new_word
-      new_phrase += " "
     end
-    new_phrase[0, (new_phrase.length - 1)]
+    new_phrase.join(" ")
   end
 end
