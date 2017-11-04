@@ -7,12 +7,9 @@ class PigLatinizer
     @word = word
     if @word[0].match(/[aeiou|AEIOU]/)
       new_word = @word + "way"
-    elsif !@word[0].match(/[aeiou|AEIOU]/) && !@word[1].match(/[aeiou]/) && !@word[2].match(/[aeiou]/)
-      new_word = @word[3, @word.length] + @word[0, 3] + "ay"
-    elsif !@word[0].match(/[aeiou|AEIOU]/) && !@word[1].match(/[aeiou]/)
-      new_word = @word[2, @word.length] + @word[0, 2] + "ay"
     else
-      new_word = @word[1, @word.length] + @word[0] + "ay"
+      index = @word.index(/[aeiou]/)
+      new_word = @word[index, @word.length] + @word[0, index ] + "ay"
     end
     new_word
   end
